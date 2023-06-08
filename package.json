@@ -1,0 +1,32 @@
+{
+  "name": "knots-and-greens",
+  "version": "1.0.0",
+  "description": "Knots and Greens: E-Commerce Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkunoCode/Knots-and-Greens.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "bootcamp",
+    "Full-Stack",
+    "MERN"
+  ],
+  "author": "John Leo D. Echevaria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkunoCode/Knots-and-Greens/issues"
+  },
+  "homepage": "https://github.com/AkunoCode/Knots-and-Greens#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
+  }
+}
