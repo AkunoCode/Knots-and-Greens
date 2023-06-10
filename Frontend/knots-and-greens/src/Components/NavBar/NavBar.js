@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './NavBar.css'
 
 function NavBar() {
+
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     return (
-        <header id="Header">
-            <div id="Logo-Section"></div>
-            <nav>
-                <ul id="Navigation-Bar">
-                    <li>Home</li>
-                    <li>Macrame</li>
-                    <li>Plants</li>
-                    <li>Shop</li>
-                    <li>About</li>
-                </ul>
-            </nav>
-            <div id="LoginCart">
-                <p>Login</p>
-                <p>Register</p>
+        <header id={`Header${scrolled ? '-Scrolled' : ''}`}>
+            <div className='Header-Container'>
+                <div id="Logo-Section"></div>
+                <nav>
+                    <ul id="Navigation-Bar">
+                        <li>HOME</li>
+                        <li>SHOP</li>
+                        <li>ABOUT</li>
+                    </ul>
+                </nav>
+                <div id="LoginCart">
+                    <button id='LOGIN'>LOGIN</button>
+                    <button id='REGISTER'>REGISTER</button>
+                </div>
             </div>
         </header>
     )
-}
-
+};
 export default NavBar;

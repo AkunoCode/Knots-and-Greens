@@ -1,16 +1,26 @@
 #Header {
-    background-color: rgba(35, 96, 34, 1);
+    color: rgba(35, 96, 34, 1);
+    position: fixed;
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
+    z-index: 10;
+    top: 0;
+}
+
+#Header-Scrolled {
+    background-color: rgba(35, 96, 34, 1);
+    color: rgb(255, 255, 255);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+}
+
+.Header-Container {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    align-items: center;
-    padding: 2vh 1vw;
-    color: white;
+    width: 88%;
+    margin: 0px auto;
+    padding: 1vh 1vw;
 }
 
 #Navigation-Bar {
@@ -21,7 +31,13 @@
 }
 
 #Navigation-Bar li {
-    margin: 0 10px;
+    margin: 0 1vw;
+    font-size: 1.5em;
+}
+
+#Navigation-Bar li:hover {
+    margin: 0 1vw;
+    font-weight: bold;
 }
 
 #LoginCart {
@@ -31,6 +47,13 @@
     list-style: none;
 }
 
-#LoginCart p {
-    margin: 0px 10px;
+#LoginCart button {
+    margin: 0px .5vw;
+    font-size: 1.2em;
+    background-color: rgba(35, 96, 34, 1);
+    color: white;
+    padding: .5vw 1vw;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
 }
