@@ -6,14 +6,14 @@ const transactionSchema = new db.Schema({
         require: true
     },
     products: [{
-        productID:{
-        type: String,
-        require: true
+        productID: {
+            type: String,
+            require: true
         },
-        quantity:{
-        type: Number,
-        require: true,
-        min:[1,"Order quantity can not be less than 1"]
+        quantity: {
+            type: Number,
+            require: true,
+            min: [1, "Order quantity can not be less than 1"]
         }
     }],
     total_price: {
