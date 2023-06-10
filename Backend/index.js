@@ -6,15 +6,17 @@ const port = process.env.PORT;
 
 // Routes
 const productRoutes = require('./src/routes/product_routes');
-const customerRoutes = require('./src/routes/customer_routes')
+const customerRoutes = require('./src/routes/customer_routes');
+const transactionRoutes = require('./src/routes/transaction_routes');
 
 
 const app = express();
 
 // MIDDLEWARE
 app.use(cors());
-app.use(productRoutes)
-app.use(customerRoutes)
+app.use(productRoutes);
+app.use(customerRoutes);
+app.use(transactionRoutes);
 
 // Running server on port
 app.listen(port, () => {
