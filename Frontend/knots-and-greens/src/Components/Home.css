@@ -11,45 +11,43 @@
   z-index: 1;
 }
 
-#Title {
+#Header-Texts {
   position: absolute;
-  top: 140px;
+  top: 12vw;
   right: 7%;
+  text-align: right;
+}
+
+#Title {
   width: 36vw;
   text-align: right;
   z-index: 2;
   color: rgba(35, 96, 34, 1);
-  font-size: 3.5em;
+  font-size: 3.5rem;
   font-weight: 800;
+  margin: 0px;
 }
 
-#Header-Image p {
-  position: absolute;
-  top: 470px;
-  right: 7%;
-  width: 34vw;
-  text-align: right;
+#Header-Texts p {
   z-index: 2;
   color: rgba(35, 96, 34, 1);
-  font-size: 1em;
+  font-size: 1rem;
+  margin-right: 0;
 }
 
-#Header-Image #ShopNow-Button {
-  position: absolute;
-  top: 540px;
-  right: 7%;
+#Header-Texts #ShopNow-Button {
   text-align: right;
   z-index: 2;
   background-color: rgba(40, 171, 69, 1);
   color: white;
-  font-size: 2em;
+  font-size: 2rem;
   padding: 1vw 3vw;
   border: none;
   border-radius: 30px;
   font-family: Anybody;
 }
 
-#Header-Image #ShopNow-Button:hover {
+#Header-Texts #ShopNow-Button:hover {
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   color: rgba(35, 96, 34, 1);
