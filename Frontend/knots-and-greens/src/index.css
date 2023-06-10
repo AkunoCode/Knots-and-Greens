@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  font-family: 'Anybody', cursive;
+  font-size: 1.25vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

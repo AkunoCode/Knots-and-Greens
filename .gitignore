@@ -1,2 +1,22 @@
 node_modules/
 .env
+Frontend/knots-and-greens/node_modules
+Frontend/knots-and-greens/.pnp
+Frontend/knots-and-greens/.pnp.js
+
+# testing
+Frontend/knots-and-greens/coverage
+
+# production
+Frontend/knots-and-greens/build
+
+# misc
+Frontend/knots-and-greens/.DS_Store
+Frontend/knots-and-greens/.env.local
+Frontend/knots-and-greens/.env.development.local
+Frontend/knots-and-greens/.env.test.local
+Frontend/knots-and-greens/.env.production.local
+
+Frontend/knots-and-greens/npm-debug.log*
+Frontend/knots-and-greens/yarn-debug.log*
+Frontend/knots-and-greens/yarn-error.log*
