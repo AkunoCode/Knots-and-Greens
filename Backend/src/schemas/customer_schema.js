@@ -13,7 +13,7 @@ const customerSchema = new db.Schema({
     },
     email: {
         type: String,
-        required: true,
+        require: true,
         validate: {
             validator: function (value) {
                 // Regular expression pattern to validate email format
@@ -25,15 +25,15 @@ const customerSchema = new db.Schema({
     },
     password: {
         type: String,
-        required: true
+        require: true
     },
     address: {
         type: String,
-        required: true
+        require: true
     },
     phone: {
         type: String,
-        required: true,
+        require: true,
         validate: {
             validator: (value) => {
                 // Regular expression pattern to validate phone format
@@ -45,7 +45,7 @@ const customerSchema = new db.Schema({
     },
     payment_method: {
         type: [String],
-        required: true,
+        require: true,
         enum: ["GCash", "Debit Card", "Cash-On-Delivery"],
         validate: {
             validator: (value) => {
