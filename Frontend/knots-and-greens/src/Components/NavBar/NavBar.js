@@ -31,8 +31,7 @@ function NavBar() {
                     </ul>
                 </nav>
                 <div id="LoginCart">
-                    <button id='LOGIN'>LOGIN</button>
-                    <button id='REGISTER'>REGISTER</button>
+                    <p className={scrolled ? 'Scrolled-Login' : ''}><a href='/' className={scrolled ? 'Scrolled-Login' : ''}>LOGIN</a>/<a href='/' className={scrolled ? 'Scrolled-Login' : ''}>REGISTER</a></p>
                 </div>
             </div>
         </header>

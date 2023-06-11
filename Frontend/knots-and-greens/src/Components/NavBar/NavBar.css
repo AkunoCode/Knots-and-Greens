@@ -1,5 +1,5 @@
 #Header {
-    color: rgba(35, 96, 34, 1);
+    color: var(--MainColor);
     position: fixed;
     width: 100%;
     z-index: 10;
@@ -7,13 +7,14 @@
 }
 
 #Header-Scrolled {
-    background-color: rgba(35, 96, 34, 1);
+    background-color: var(--MainColor);
     color: rgb(255, 255, 255);
     position: fixed;
     width: 100%;
     z-index: 10;
     top: 0;
 }
+
 
 .Header-Container {
     display: grid;
@@ -43,17 +44,19 @@
 #LoginCart {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 0;
     list-style: none;
 }
 
-#LoginCart button {
-    margin: 0px .5vw;
-    font-size: 1.2rem;
-    background-color: rgba(35, 96, 34, 1);
+#LoginCart p,
+#LoginCart a {
+    color: var(--MainColor);
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+#LoginCart .Scrolled-Login {
     color: white;
-    padding: .5vw 1vw;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
 }

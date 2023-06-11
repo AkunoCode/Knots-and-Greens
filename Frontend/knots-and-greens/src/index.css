@@ -1,5 +1,7 @@
-html {
+:root {
   font-size: 1.2vw;
+  --MainColor: rgba(13, 56, 36, 1);
+  --AccentColor: rgba(255, 111, 0, 1);
 }
 
 body {

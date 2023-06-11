@@ -1,6 +1,6 @@
 #Header-Image {
   width: 100%;
-  height: auto;
+  height: 50vw;
   overflow: hidden;
   z-index: 1;
 }
@@ -9,20 +9,23 @@
   width: 100%;
   object-fit: cover;
   z-index: 1;
+  transform: scaleX(-1);
 }
 
 #Header-Texts {
+  z-index: 2;
   position: absolute;
-  top: 12vw;
-  right: 7%;
-  text-align: right;
+  top: 13vw;
+  left: 7%;
+  text-align: left;
+  animation: Pan-In 1.2s ease-out;
 }
 
 #Title {
   width: 36vw;
-  text-align: right;
+  text-align: left;
   z-index: 2;
-  color: rgba(35, 96, 34, 1);
+  color: var(--MainColor);
   font-size: 3.5rem;
   font-weight: 800;
   margin: 0px;
@@ -30,15 +33,16 @@
 
 #Header-Texts p {
   z-index: 2;
-  color: rgba(35, 96, 34, 1);
+  color: var(--MainColor);
   font-size: 1rem;
   margin-right: 0;
 }
 
 #Header-Texts #ShopNow-Button {
+  margin-top: 2vw;
   text-align: right;
   z-index: 2;
-  background-color: rgba(40, 171, 69, 1);
+  background-color: var(--AccentColor);
   color: white;
   font-size: 2rem;
   padding: 1vw 3vw;
@@ -49,14 +53,77 @@
 
 #Header-Texts #ShopNow-Button:hover {
   cursor: pointer;
-  background-color: rgb(255, 255, 255);
-  color: rgba(35, 96, 34, 1);
+  background-color: rgba(255, 255, 255, 0);
+  color: var(--AccentColor);
   border-style: solid;
   border-width: 2px;
 }
 
-.Carousel-Image {
-  height: 30vw;
+#First-Section {
+  margin-top: 4vw;
+  /* display: flex; */
+  /* flex-flow: row; */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1vw;
+}
+
+#First-Section h2 {
+  font-size: 2.1rem;
+  margin: 0;
+  color: var(--MainColor);
+}
+
+#First-Section .Accent-Text {
+  font-size: 4rem;
+  color: var(--AccentColor);
+}
+
+#First-Section p {
+  color: var(--MainColor);
+  width: 50%;
+  font-size: 1.2rem;
+}
+
+#Second-Section {
+  margin-top: 0;
+  /* display: flex; */
+  /* flex-flow: row; */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1vw;
+}
+
+#Second-Section h2 {
+  font-size: 2.1rem;
+  margin: 0;
+  color: var(--MainColor);
+}
+
+#Second-Section .Accent-Text {
+  font-size: 4rem;
+  color: var(--AccentColor);
+}
+
+#Second-Section p {
+  color: var(--MainColor);
+  width: 50%;
+  font-size: 1.2rem;
+  margin: 1vw auto;
+}
+
+@keyframes Pan-In {
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+
+  0% {
+    transform: translateX(-20%);
+    opacity: 0%;
+  }
 }
 
 

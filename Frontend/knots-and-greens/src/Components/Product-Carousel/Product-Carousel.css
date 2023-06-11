@@ -1,0 +1,82 @@
+.Carousel-Container {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 2.3vw;
+    padding-bottom: 2.3vw;
+}
+
+.Images-Container {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    position: relative;
+    /* overflow-x: hidden; */
+    animation: Scrolling 15s ease-in-out infinite both
+}
+
+.Images-Container:hover {
+    animation-play-state: paused;
+}
+
+.Images-Container img {
+    width: 15vw;
+    margin: 0px 1vw;
+    border-radius: 2vw;
+}
+
+.Images-Container img:hover {
+    animation: Expand 2s ease-in-out 1 alternate forwards;
+}
+
+#Left-Rect,
+#Right-Rect {
+    width: 20vw;
+    height: 100%;
+}
+
+#Left-Rect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, rgb(255, 255, 255)30%, rgba(0, 128, 0, 0));
+}
+
+#Right-Rect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to left, rgb(255, 255, 255) 30%, rgba(255, 255, 0, 0));
+}
+
+@keyframes Expand {
+    100% {
+        transform: scale(1.1, 1.1);
+        box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.384);
+    }
+
+    50% {
+        box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.699);
+    }
+
+    10% {
+        box-shadow: 0px 0px 1vw rgba(0, 0, 0, 0.897)
+    }
+}
+
+
+@keyframes Scrolling {
+    100% {
+        transform: translateX(10%)
+    }
+
+    50% {
+        transform: translateX(-20%)
+    }
+
+    0% {
+        transform: translateX(10%)
+    }
+}
