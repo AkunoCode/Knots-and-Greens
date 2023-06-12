@@ -28,7 +28,7 @@
 }
 
 .Images-Container img:hover {
-    animation: Expand 2s ease-in-out 1 alternate forwards;
+    animation: Expand .75s ease-in-out 1 alternate forwards;
 }
 
 #Left-Rect,

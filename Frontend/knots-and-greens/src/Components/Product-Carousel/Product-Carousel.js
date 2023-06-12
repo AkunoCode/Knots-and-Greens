@@ -8,7 +8,7 @@ function Carousel() {
         <div className="Carousel-Container">
             <div className='Images-Container'>
                 {ImageArray.map((path) => {
-                    return <a href='/'><img src={path} alt="" /></a>
+                    return <a href='/Shop'><img src={path} alt="" /></a>
                 })}
             </div>
             <div id='Left-Rect' />
