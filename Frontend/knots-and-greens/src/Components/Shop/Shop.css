@@ -72,7 +72,7 @@
     padding: 1rem;
     border-radius: 2vw;
     border: none;
-    background-color: var(--MainColor);
+    background-color: var(--AccentColor);
     color: white;
     font-weight: bolder;
 }

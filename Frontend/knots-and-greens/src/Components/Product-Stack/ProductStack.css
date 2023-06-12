@@ -44,25 +44,25 @@
 }
 
 #AddToCart circle {
-    fill: var(--MainColor);
+    fill: var(--AccentColor);
 }
 
 #AddToCart:hover circle {
-    animation: AddToCart .4s ease-in-out forwards;
+    /* animation: AddToCart .4s ease-in-out forwards; */
     cursor: pointer;
 }
 
 
-@keyframes AddToCart {
+/* @keyframes AddToCart {
     100% {
         fill: var(--AccentColor);
     }
 
     0% {
-        fill: var(--MainColor);
+        fill: var(--AccentColor);
     }
 
-}
+} */
 
 #ProductPrice {
     color: var(--MainColor);
