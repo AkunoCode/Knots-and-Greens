@@ -28,7 +28,7 @@ function App() {
       <div id='Header-Texts'>
         <h1 id='Title'>Something handmade is so much more meaningful</h1>
         <p><i>Knot</i> your average style. Discover the art of macramé</p>
-        <button id='ShopNow-Button'>Shop Now</button>
+        <a href='/Shop'><button id='ShopNow-Button'>Shop Now</button></a>
       </div>
       <div id='First-Section'>
         <h2>EXPRESS THE LOVE WITH OUR</h2>
