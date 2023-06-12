@@ -1,7 +1,8 @@
 import './Home.css';
-import NavBar from './NavBar/NavBar';
-import Carousel from './Product-Carousel/Product-Carousel';
-import ProductStack from './Product-Stack/ProductStack';
+import NavBar from '../NavBar/NavBar';
+import Carousel from '../Product-Carousel/Product-Carousel';
+import ProductStack from '../Product-Stack/ProductStack';
+import FooterComp from '../Footer/FooterComp';
 
 const TempInfo = [{
   path: "./Media/Macrame/Basket.jpg", product_name: "Macramme Basket Decoration", product_qty: 10, product_price: 500
@@ -45,6 +46,7 @@ function App() {
           return <ProductStack item={product} />
         })}
       </div>
+      <FooterComp />
     </>
   );
 }

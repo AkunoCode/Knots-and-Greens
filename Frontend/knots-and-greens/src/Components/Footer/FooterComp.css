@@ -1,0 +1,6 @@
+footer {
+    height: 10vw;
+    padding: 10px;
+    background-color: var(--MainColor);
+    color: white;
+}
