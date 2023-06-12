@@ -111,8 +111,29 @@
   color: var(--MainColor);
   width: 50%;
   font-size: 1.2rem;
-  margin: 1vw auto;
+  margin: 0 auto;
 }
+
+#ProductSectTitle {
+  color: var(--MainColor);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3rem;
+  width: 50%;
+  text-align: center;
+  margin-top: 6vw;
+}
+
+#ProductSection {
+  width: 55%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 2vw auto;
+  justify-items: center;
+  align-content: center;
+}
+
 
 @keyframes Pan-In {
   100% {

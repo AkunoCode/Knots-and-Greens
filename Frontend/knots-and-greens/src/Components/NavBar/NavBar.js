@@ -22,10 +22,12 @@ function NavBar() {
     return (
         <header id={`Header${scrolled ? '-Scrolled' : ''}`}>
             <div className='Header-Container'>
-                <div id="Logo-Section"></div>
+                <div id="Logo-Section">
+                    <h1>Knots and Greens</h1>
+                </div>
                 <nav>
-                    <ul id="Navigation-Bar">
-                        <li>HOME</li>
+                    <ul id={`Navigation-Bar${scrolled ? '-Scrolled' : ''}`}>
+                        <li><a href='/'>HOME</a></li>
                         <li>SHOP</li>
                         <li>ABOUT</li>
                     </ul>
