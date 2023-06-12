@@ -30,8 +30,13 @@
     border-color: var(--AccentColor);
 }
 
+#SearchBar::placeholder {
+    color: rgba(94, 138, 94, 0.336);
+}
+
 #ResultsContainer {
-    width: 100%;
+    min-width: 80%;
+    max-width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 2rem;

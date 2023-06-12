@@ -1,5 +1,6 @@
 import './ProductStack.css'
 
+
 function ProductStack({ item }) {
     const { path, product_name, product_price } = item;
     return (

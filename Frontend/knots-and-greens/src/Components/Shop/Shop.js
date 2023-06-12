@@ -48,6 +48,7 @@ function Shop() {
                 </div>
                 <div id="Cart-Section">
                     <h2>Your Cart</h2>
+
                     <button id="CheckOut">Check Out Now</button>
                 </div>
             </div>
