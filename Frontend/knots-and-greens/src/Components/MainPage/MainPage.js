@@ -40,7 +40,7 @@ function MainPage() {
                         <ul id={`Navigation-Bar${scrolled ? '-Scrolled' : ''}`}>
                             <li><Link to="/" onClick={handleClickTop}>HOME</Link></li>
                             <li><Link to="/Shop" onClick={handleClickTop}>SHOP</Link></li>
-                            <li>ABOUT</li>
+                            <li><Link to="/Admin" onClick={handleClickTop}>ADMIN</Link></li>
                         </ul>
                     </nav>
                     <div id="LoginCart">

@@ -1,0 +1,204 @@
+#Admin-Section {
+    /* background-color: rgba(214, 230, 222); */
+    padding-top: 6vw;
+    padding-right: 3vw;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 2vw;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#CreationSection {
+    /* background-color: red; */
+    height: 44vw;
+}
+
+#FormArea {
+    width: 37vw;
+    height: 44vw;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4vw;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
+    position: fixed;
+    left: 3vw;
+    top: 7vw;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}
+
+#FormArea h2 {
+    color: var(--MainColor);
+    font-size: 2rem;
+    margin-bottom: 1vw;
+}
+
+#FormArea input[type='text'] {
+    border-style: solid;
+    border-color: var(--MainColor);
+
+}
+
+#FormArea input[type='text']::placeholder {
+    color: rgba(43, 117, 71, 0.363);
+
+}
+
+#FormArea input[type='text']:focus {
+    outline-color: var(--AccentColor);
+
+}
+
+
+.ImageCheckbox {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 1vw;
+    margin: 0px auto;
+    width: 80%;
+    height: 50%;
+}
+
+#ProductImageContainer {
+    margin: 0px auto;
+    width: 100%;
+    min-height: 90%;
+    background-color: gray;
+    border-radius: 3vw;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349);
+}
+
+#ProductPreview {
+    width: 100%;
+}
+
+#Image-Input {
+    margin-top: 1vw;
+    font-size: 1rem;
+    text-align: center;
+    width: 80%;
+}
+
+
+.CheckBox {
+    text-align: left;
+    min-width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: rgba(61, 145, 103, 0.418);
+    border-radius: 1vw;
+    padding: 1vw;
+}
+
+
+.CheckBox input {
+    margin-top: 1vw;
+}
+
+
+#Name-Input {
+    display: block;
+    margin: .5vw auto 0px auto;
+    width: 80%;
+    height: 3rem;
+    font-size: 1.75rem;
+    border-radius: 1vw;
+    text-align: center;
+
+}
+
+.PriceQty {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: .4vw;
+    margin: .5vw auto;
+    width: 70%;
+    text-align: center;
+}
+
+#Price-Input {
+    display: block;
+    min-width: 50%;
+    height: 2rem;
+    font-size: 1.30rem;
+    border-radius: 1vw;
+    text-align: center;
+}
+
+#Qty-Input {
+    display: block;
+    min-width: 50%;
+    height: 2rem;
+    font-size: 1.3rem;
+    border-radius: 1vw;
+    text-align: center;
+}
+
+.Buttons-Input {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1vw;
+    margin: 1.2vw auto 0px auto;
+    width: 70%;
+    text-align: center;
+}
+
+.Buttons-Input button {
+    font-size: 1.5rem;
+    padding: .7vw 0px;
+    border-radius: 2vw;
+    background-color: var(--AccentColor);
+    color: white;
+    border: none;
+
+}
+
+#ProductSectionAdmin {
+    /* background-color: blue; */
+    max-width: 55%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1vw;
+    row-gap: 1vw;
+    position: absolute;
+    right: 3vw;
+}
+
+#Product-Card {
+    padding: 1vw;
+    background-color: rgb(255, 255, 255);
+    min-width: 50%;
+    max-height: 16vw;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: .5vw;
+    border-radius: 1vw;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
+    margin: 0;
+}
+
+#Product-Card img {
+    width: 100%;
+    border-radius: 1vw;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
+}
+
+#Product-Card button {
+    margin-top: 1vw;
+    border-radius: 1vw;
+    background-color: var(--AccentColor);
+    font-size: 1rem;
+    border: none;
+    /* font-weight: bold; */
+    color: white;
+    padding-top: .5vw;
+    padding-bottom: .5vw;
+}
+
+#Delete-Button:hover {
+    cursor: pointer;
+    background-color: red;
+}

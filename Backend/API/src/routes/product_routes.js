@@ -65,9 +65,9 @@ router.post('/products', (req, res) => {
 // it with the values that will come from the body of the http request.
 router.put('/products/:id', (req, res) => {
     const productID = req.params.id;
-    const { productName, price, qty, tags } = req.body;
+    const { imagePath, productName, price, qty, tags } = req.body;
 
-    Product.findByIdAndUpdate(productID, { productName, price, qty, tags }, { new: true, runValidators: true }).then((product) => {
+    Product.findByIdAndUpdate(productID, { imagePath, productName, price, qty, tags }, { new: true, runValidators: true }).then((product) => {
         if (!product) {
             return res.status(404).json({ message: `Product ID ${productID} could not be found.` });
         }

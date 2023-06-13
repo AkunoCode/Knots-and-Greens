@@ -21,7 +21,7 @@ const productSchema = new db.Schema({
     },
     tags: {
         type: [String],
-        enum: { values: ["best-seller", "sale", "featured", "carousel"], message: '{VALUE} is not supported' }
+        enum: { values: ["hot", "sale", "featured", "carousel"], message: '{VALUE} is not supported' }
     }
 });
 
