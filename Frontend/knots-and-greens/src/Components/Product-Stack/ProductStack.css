@@ -38,9 +38,10 @@
 #AddToCart {
     position: absolute;
     z-index: 2;
-    left: 12%;
-    top: 62%;
-    width: 3vw
+    left: 8%;
+    top: 64%;
+    width: 3vw;
+    height: 3vw;
 }
 
 #AddToCart circle {
@@ -50,6 +51,22 @@
 #AddToCart:hover circle {
     /* animation: AddToCart .4s ease-in-out forwards; */
     cursor: pointer;
+}
+
+#ProductStock {
+    background-color: var(--AccentColor);
+    padding: .90vw;
+    width: 2vw;
+    font-weight: bold;
+    border-radius: 4vw;
+    color: white;
+    position: absolute;
+    z-index: 2;
+    left: 26%;
+    top: 64%;
+    justify-content: center;
+    text-align: center;
+    margin: 0px
 }
 
 

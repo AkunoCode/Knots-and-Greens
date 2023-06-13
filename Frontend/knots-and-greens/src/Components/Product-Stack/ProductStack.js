@@ -16,7 +16,7 @@ function ProductStack({ item }) {
             </a>
             <p id="ProductName">{productName}</p>
             <p id="ProductPrice">&#8369;{price}</p>
-            {/* <p id="ProductStock">Remaining Stock: {qty}</p> */}
+            <p id="ProductStock">{qty}</p>
         </div>
     )
 }
