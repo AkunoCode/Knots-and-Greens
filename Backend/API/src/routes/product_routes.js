@@ -50,8 +50,8 @@ router.get('/products/:id', (req, res) => {
 // POST METHOD: Input New Record from the data attached in the body of the http request, which will then 
 // be parsed by the middleware.
 router.post('/products', (req, res) => {
-    const { productName, price, qty, tags } = req.body;
-    const newProduct = new Product({ productName, price, qty, tags });
+    const { imagePath, productName, price, qty, tags } = req.body;
+    const newProduct = new Product({ imagePath, productName, price, qty, tags });
 
     newProduct.save().then((product) => {
         res.status(201).json({ message: "Product successfully created.", result: product });

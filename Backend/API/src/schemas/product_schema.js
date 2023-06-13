@@ -1,6 +1,11 @@
 const db = require('mongoose');
 
 const productSchema = new db.Schema({
+    imagePath: {
+        type: String,
+        require: true
+    },
+
     productName: {
         type: String,
         require: true
@@ -16,7 +21,7 @@ const productSchema = new db.Schema({
     },
     tags: {
         type: [String],
-        enum: { values: ["best-seller", "sale"], message: '{VALUE} is not supported' }
+        enum: { values: ["best-seller", "sale", "featured", "carousel"], message: '{VALUE} is not supported' }
     }
 });
 
