@@ -1,5 +1,4 @@
 import './Home.css';
-import NavBar from '../NavBar/NavBar';
 import Carousel from '../Product-Carousel/Product-Carousel';
 import ProductStack from '../Product-Stack/ProductStack';
 import FooterComp from '../Footer/FooterComp';
@@ -21,7 +20,6 @@ const TempInfo = [{
 function App() {
   return (
     <>
-      <NavBar />
       <div id='Header-Image'>
         <img src='./Media/Header_Pic.png' alt='Knots and Greens' />
       </div>

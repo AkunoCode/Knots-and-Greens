@@ -1,4 +1,3 @@
-import NavBar from "../NavBar/NavBar";
 import { useState } from 'react'
 import './Shop.css'
 import ProductStack from "../Product-Stack/ProductStack";
@@ -35,7 +34,6 @@ function Shop() {
 
     return (
         <>
-            <NavBar />
             <div id="Shop-Container">
                 <div id="Search-Section">
                     <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Searching for an item?" id="SearchBar" />

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import './NavBar.css'
+import './MainPage.css'
 
-function NavBar() {
+function MainPage() {
 
     const [scrolled, setScrolled] = useState(false);
 
@@ -52,4 +52,4 @@ function NavBar() {
         </>
     )
 };
-export default NavBar;
+export default MainPage;
