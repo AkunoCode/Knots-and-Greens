@@ -3,6 +3,8 @@ import Home from '../Components/Home/Home'
 import Shop from './Shop/Shop';
 import MainPage from './MainPage/MainPage';
 import Admin from './Admin/Admin';
+import SignUp from './LoginSignup/SignUp';
+import Login from './LoginSignup/Login';
 
 function App() {
     return (
@@ -12,6 +14,9 @@ function App() {
                     <Route index element={<Home />} />
                     <Route path='Shop' element={<Shop />} />
                     <Route path='Admin' element={<Admin />} />
+                    <Route path='Login' element={<Login />} />
+                    <Route path="Signup" element={<SignUp />} />
+                    <Route path='*' element={<h1>404 Not Found</h1>} />
                 </Route>
             </Routes>
         </BrowserRouter>

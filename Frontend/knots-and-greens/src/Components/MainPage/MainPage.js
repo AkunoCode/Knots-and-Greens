@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './MainPage.css'
 
-function MainPage() {
+function MainPage({ loggedIn, adminAccount }) {
 
     const [scrolled, setScrolled] = useState(false);
 
@@ -38,13 +38,23 @@ function MainPage() {
                     </div>
                     <nav>
                         <ul id={`Navigation-Bar${scrolled ? '-Scrolled' : ''}`}>
-                            <li><Link to="/" onClick={handleClickTop}>HOME</Link></li>
-                            <li><Link to="/Shop" onClick={handleClickTop}>SHOP</Link></li>
-                            <li><Link to="/Admin" onClick={handleClickTop}>ADMIN</Link></li>
+                            {!adminAccount ? <><li> <Link to="/" onClick={handleClickTop}>HOME</Link></li>
+                                <li><Link to="/Shop" onClick={handleClickTop}>SHOP</Link></li>
+                                <li><Link to="/About" onClick={handleClickTop}>ABOUT</Link></li>
+                            </>
+                                :
+                                <>
+                                    <li><Link to="/" onClick={handleClickTop}>HOME</Link></li>
+                                    <li><Link to="/Admin" onClick={handleClickTop}>ADMIN</Link></li>
+                                    <li><Link to="/About" onClick={handleClickTop}>ABOUT</Link></li>
+                                </>}
                         </ul>
                     </nav>
                     <div id="LoginCart">
-                        <p className={scrolled ? 'Scrolled-Login' : ''}><a href='/' className={scrolled ? 'Scrolled-Login' : ''}>LOGIN</a>/<a href='/' className={scrolled ? 'Scrolled-Login' : ''}>REGISTER</a></p>
+                        {!loggedIn ? <p className={scrolled ? 'Scrolled-Login' : ''}>
+                            <Link to='/Login' onClick={handleClickTop} className={scrolled ? 'Scrolled-Login' : ''}>LOGIN</Link>/
+                            <Link to='/Signup' onClick={handleClickTop} className={scrolled ? 'Scrolled-Login' : ''}>SIGNUP</Link>
+                        </p> : <Link to='/' onClick={() => { handleClickTop(); loggedIn = false }} className={scrolled ? 'Scrolled-Login' : ''}>LOGOUT</Link>}
                     </div>
                 </div>
             </header >
