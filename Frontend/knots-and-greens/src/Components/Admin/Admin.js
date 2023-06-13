@@ -203,8 +203,8 @@ function Admin() {
                                 </div>
                                 <div>
                                     <p>{product.productName}</p>
-                                    <p>{product.price}</p>
-                                    <p>{product.qty}</p>
+                                    <p>Price: &#8369;{product.price}</p>
+                                    <p>Stock: {product.qty}</p>
                                     <p>Tags: {product.tags}</p>
                                 </div>
                                 <button id='Delete-Button' onClick={() => deleteProduct(product._id)}>Delete</button>

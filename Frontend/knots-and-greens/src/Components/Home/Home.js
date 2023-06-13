@@ -25,7 +25,7 @@ function Home() {
 
   useEffect(() => {
     loadData();
-  }, [])
+  })
 
   const loadData = async () => {
     try {
