@@ -1,0 +1,56 @@
+.Login-Container{
+    position: absolute;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: rgba(4, 104, 69, 0.267);
+    top: 10vw;
+    left: 25vw;
+    border-radius: 3vw;
+    padding: 4vw 0px 4vw 0px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.22);
+}
+.Login-Container p{
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 1vw;
+}
+.Login-Container h1{
+    margin: 0px;
+    font-size: 3rem;
+    color: var(--MainColor);
+}
+
+#Email-Input{
+    margin-top: 1vw;
+    display: block;
+    width: 70%;
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 1vw;
+}
+
+#Password-Input{
+    display: block;
+    width: 70%;
+    font-size: 2rem;
+    margin-top: 1vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 1vw;
+}
+
+#Login-Button{
+    margin-top: 3vw;
+    width: 50%;
+    padding: 1vw .5vw 1vw .5vw;
+    font-size: 2rem;
+    border: none;
+    background-color: var(--AccentColor);
+    border-radius: 2vw;
+    color: white;
+}
