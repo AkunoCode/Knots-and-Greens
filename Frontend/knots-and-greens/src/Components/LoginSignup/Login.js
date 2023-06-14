@@ -1,12 +1,13 @@
+import './Login.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import MainPage from "../MainPage/MainPage";
+// import MainPage from "../MainPage/MainPage";
 const URL_PATH = 'http://localhost:2003/customers'
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [customers, setCustomers] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
@@ -22,24 +23,12 @@ function Login() {
         }
     }
 
-    console.log(customers)
-    const handleEmail = (event) => {
-        setEmail(event.target.value)
-    }
-
-    const handlePassword = (event) => {
-        setPassword(event.target.value)
-    }
-
     // Check if email and password matches the database
     const handleSubmit = (event) => {
-        event.preventDefault();
-        const foundCustomer = customers.find((customer) => customer.email === email && customer.password === password)
-        console.log(foundCustomer)
+        const foundCustomer = customers.find((customer)=> customer.email === email && customer.password === password)
         if (foundCustomer) {
             setIsLoggedIn(true)
             clearInputs();
-            <MainPage loggedIn={isLoggedIn} adminAccount={isAdmin} />
         } else {
             alert('Invalid Email or Password')
         }
@@ -53,13 +42,16 @@ function Login() {
 
 
     return (
-        <>
+        <div className='Body'>
             <div className="Login-Container">
-                <input type="text" placeholder="Email" onChange={handleEmail} />
-                <input type="password" placeholder="Password" onChange={handlePassword} />
-                <button onClick={handleSubmit}>Login</button>
+                <h1>Login Your Account</h1>
+                <p>Email</p>
+                <input type="text" placeholder="sample@email.com" value={email} onChange={(e)=>{setEmail(e.target.value)}}  id='Email-Input' />
+                <p>Password</p>
+                <input type="password" placeholder="sample123" value={password} onChange={(e)=>{setPassword(e.target.value)}}  id='Password-Input' />
+                <button onClick={handleSubmit} id='Login-Button'>Login</button>
             </div>
-        </>
+        </div>
     )
 }
 
