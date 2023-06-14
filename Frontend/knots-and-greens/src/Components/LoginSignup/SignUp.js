@@ -1,3 +1,4 @@
+import './SignUp.css'
 import axios from "axios";
 import { useState } from "react";
 
@@ -91,11 +92,11 @@ function SignUp() {
     return (
         <>
             <div className="Signup-Container">
-                <h1>Sign Up</h1>
+                <h1>Create An Account</h1>
                 <input type="text" placeholder="First Name" onChange={handleFirstName} />
                 <input type="text" placeholder="Last Name" onChange={handleLastName} />
-                <input type="password" placeholder="Password" onChange={handlePassword} />
                 <input type="email" placeholder="Email" onChange={handleEmail} />
+                <input type="password" placeholder="Password" onChange={handlePassword} />
                 <input type="text" placeholder="Address" onChange={handleAddress} />
                 <input type="text" placeholder="Phone Number" onChange={handlePhone} />
                 <div className="Payment-Method">
@@ -124,7 +125,7 @@ function SignUp() {
                         <label for="Cash-On-Delivery">Cash-On-Delivery</label><br />
                     </div>
                 </div>
-                <button onClick={handleSubmit}>Sign Up</button>
+                <button onClick={handleSubmit} id='Signup-Button'>Sign Up</button>
             </div>
         </>
     )
