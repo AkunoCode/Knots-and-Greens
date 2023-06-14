@@ -17,3 +17,11 @@ a {
   text-decoration: none;
   color: var(--MainColor)
 }
+
+#NotFound{
+  position: fixed;
+  font-size: 4rem;
+  top: 35%;
+  left: 32%;
+  color: var(--AccentColor);
+}
