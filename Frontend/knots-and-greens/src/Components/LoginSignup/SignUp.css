@@ -1,0 +1,47 @@
+.Signup-Container{
+    position: absolute;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: rgba(4, 104, 69, 0.267);
+    top: 7vw;
+    left: 25vw;
+    border-radius: 3vw;
+    padding: 2vw 0px 2vw 0px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.22);
+}
+
+.Signup-Container h1, .Signup-Container h2{
+    margin-top: 0;
+    color: var(--MainColor);
+}
+
+.Signup-Container input[type="text"], input[type="password"], input[type="email"]{
+    display: block;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    font-size: 1rem;
+}
+
+.Payment-Method{
+    width: 50%;
+    margin: 2vw auto 2vw auto
+}
+
+.Payment-Method h2{
+    margin: 0px 0px 1vw 0px;
+}
+
+#Signup-Button{
+    width: 50%;
+    padding: 1vw .5vw 1vw .5vw;
+    font-size: 2rem;
+    border: none;
+    background-color: var(--AccentColor);
+    border-radius: 2vw;
+    color: white;
+}
