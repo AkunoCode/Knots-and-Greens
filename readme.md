@@ -1,12 +1,12 @@
-# Knots and Greens - Full-Stack Web Application (MERN Stack)
+# Knots and Greens - Full-Stack E-commerce Website (MERN Stack)
 
-Welcome to the Knots and Greens repository! This is the source code for our final project in the Bootcamp: Full-Stack Mastery: A Comprehensive Training on Web Development Frameworks using the MERN Stack.
+This is the source code for my final project in the Bootcamp: "Full-Stack Mastery: A Comprehensive Training on Web Development Frameworks" . Knots and Greens is a MERN stack-based e-commerce website that specializes in selling plants and macramé decorations.
 
 ## Course Overview
-The Full-Stack Mastery course provides a comprehensive introduction to Full Stack Web Development using the MERN stack (MongoDB, Express.js, React.js, Node.js). Throughout the course, participants gain hands-on experience and practical skills required to develop modern web applications. By the end of the course, you will have the skills and knowledge necessary to build full-stack web applications using the MERN stack.
+The Full-Stack Mastery bootcamp provides a comprehensive introduction to Full Stack Web Development using the MERN stack (MongoDB, Express.js, React.js, Node.js). Throughout the course, participants gain hands-on experience and practical skills required to develop modern web applications. As the culmination of the bootcamp, we have built Knots and Greens as the final output.
 
 ## Course Objectives
-By completing this course, you will achieve the following objectives:
+By completing this bootcamp, you will achieve the following objectives:
 
 - Understand the concepts of full-stack web development
 - Acquire basic knowledge of HTML, CSS, and JavaScript
@@ -16,4 +16,4 @@ By completing this course, you will achieve the following objectives:
 - Implement authentication in full-stack web applications
 
 ## Acknowledgments
-We extend our sincere gratitude to all the instructors, contributors, and participants who have contributed to the success of this course. Your dedication and passion for learning and teaching web development are greatly appreciated. Thank you for making this course possible.
+I extend my sincere gratitude to our instructor that made this bootcamp a success. Your dedication and passion for teaching web development is greatly appreciated. Thank you for making this journey possible and helping create Knots and Greens, MERN stack-based e-commerce website selling plants and macramé decorations.
