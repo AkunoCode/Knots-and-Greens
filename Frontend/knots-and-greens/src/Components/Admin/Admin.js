@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import Resizer from 'react-image-file-resizer'
 import './Admin.css'
 import axios from 'axios';
 
@@ -11,6 +12,7 @@ function Admin() {
     const [price, setPrice] = useState();
     const [qty, setQty] = useState();
     const [checkedValues, setCheckedValues] = useState([]);
+    const inputRef = useRef();
 
 
     // Loading Data on first load of the page
@@ -41,17 +43,22 @@ function Admin() {
         }
     };
 
-    // Handling Image Changes that will convert and setimagepath to the base64 string
+    // Handling image changes that will resize the image using react-image-file-resizer and setimagepath to the base64 string
     const handleImageChange = (image) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setImagePath(reader.result);
-            }
-        }
-        reader.readAsDataURL(image);
-
+        Resizer.imageFileResizer(
+            image,
+            260,
+            360,
+            "JPEG",
+            99,
+            0,
+            (uri) => {
+                setImagePath(uri);
+            },
+            "base64"
+        );
     };
+
 
 
     // Creating new product
@@ -131,6 +138,7 @@ function Admin() {
         setQty("");
         setCheckedValues([]);
         setId("");
+        inputRef.current.value = "";
     }
 
 
@@ -179,6 +187,7 @@ function Admin() {
                     </div>
                     <input type="file"
                         id="Image-Input"
+                        ref={inputRef}
                         onChange={(e) => handleImageChange(e.target.files[0])} />
                     <input type="text"
                         onChange={(e) => setProductName(e.target.value)}
