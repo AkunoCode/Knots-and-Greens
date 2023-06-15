@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import Resizer from 'react-image-file-resizer'
 import './Admin.css'
 import axios from 'axios';
 
@@ -11,6 +12,7 @@ function Admin() {
     const [price, setPrice] = useState();
     const [qty, setQty] = useState();
     const [checkedValues, setCheckedValues] = useState([]);
+    const inputRef = useRef();
 
 
     // Loading Data on first load of the page
@@ -40,6 +42,24 @@ function Admin() {
             );
         }
     };
+
+    // Handling image changes that will resize the image using react-image-file-resizer and setimagepath to the base64 string
+    const handleImageChange = (image) => {
+        Resizer.imageFileResizer(
+            image,
+            260,
+            360,
+            "JPEG",
+            99,
+            0,
+            (uri) => {
+                setImagePath(uri);
+            },
+            "base64"
+        );
+    };
+
+
 
     // Creating new product
     const createProduct = async () => {
@@ -118,13 +138,13 @@ function Admin() {
         setQty("");
         setCheckedValues([]);
         setId("");
+        inputRef.current.value = "";
     }
 
 
     return (
         <>
             <div id="Admin-Section">
-                {/* <div id='CreationSection'> */}
                 <div id='FormArea'>
                     <h2>Product Information</h2>
                     <div className='ImageCheckbox'>
@@ -165,11 +185,10 @@ function Admin() {
                             </div>
                         </div>
                     </div>
-                    <input type="text"
+                    <input type="file"
                         id="Image-Input"
-                        value={imagePath}
-                        onChange={(e) => setImagePath(e.target.value)}
-                        placeholder='Place file in Media/ write relative path here "./Media/Example.jpg"' />
+                        ref={inputRef}
+                        onChange={(e) => handleImageChange(e.target.files[0])} />
                     <input type="text"
                         onChange={(e) => setProductName(e.target.value)}
                         placeholder="Name Your Product"
