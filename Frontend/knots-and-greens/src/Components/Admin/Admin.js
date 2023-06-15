@@ -41,6 +41,19 @@ function Admin() {
         }
     };
 
+    // Handling Image Changes that will convert and setimagepath to the base64 string
+    const handleImageChange = (image) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImagePath(reader.result);
+            }
+        }
+        reader.readAsDataURL(image);
+
+    };
+
+
     // Creating new product
     const createProduct = async () => {
         try {
@@ -124,7 +137,6 @@ function Admin() {
     return (
         <>
             <div id="Admin-Section">
-                {/* <div id='CreationSection'> */}
                 <div id='FormArea'>
                     <h2>Product Information</h2>
                     <div className='ImageCheckbox'>
@@ -165,11 +177,9 @@ function Admin() {
                             </div>
                         </div>
                     </div>
-                    <input type="text"
+                    <input type="file"
                         id="Image-Input"
-                        value={imagePath}
-                        onChange={(e) => setImagePath(e.target.value)}
-                        placeholder='Place file in Media/ write relative path here "./Media/Example.jpg"' />
+                        onChange={(e) => handleImageChange(e.target.files[0])} />
                     <input type="text"
                         onChange={(e) => setProductName(e.target.value)}
                         placeholder="Name Your Product"
