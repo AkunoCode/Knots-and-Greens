@@ -18,7 +18,7 @@ function Admin() {
     // Loading Data on first load of the page
     useEffect(() => {
         loadData();
-    })
+    }, [])
 
     const loadData = async () => {
         try {
