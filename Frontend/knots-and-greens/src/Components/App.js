@@ -16,7 +16,7 @@ function App() {
                     <Route path='Admin' element={<Admin />} />
                     <Route path='Login' element={<Login />} />
                     <Route path="Signup" element={<SignUp />} />
-                    <Route path='*' element={<h1>404 Not Found</h1>} />
+                    <Route path='*' element={<h1 id='NotFound'>404 Not Found</h1>} />
                 </Route>
             </Routes>
         </BrowserRouter>
