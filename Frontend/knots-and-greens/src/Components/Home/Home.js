@@ -21,54 +21,67 @@ import { useEffect, useState } from 'react';
 const URL_PATH = 'http://localhost:2003/products'
 
 function Home() {
-  const [products, setProducts] = useState([]);
+	const [products, setProducts] = useState([]);
+	const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    loadData();
-  })
+	useEffect(() => {
+		loadData();
+	}, [])
 
-  const loadData = async () => {
-    try {
-      const response = await axios.get(URL_PATH)
-      setProducts(response.data.result)
-    } catch (error) {
-      alert('An Error Occured While Loading the Contents')
-    }
-  }
+	const loadData = async () => {
+		try {
+			const response = await axios.get(URL_PATH)
+			setProducts(response.data.result)
+			setIsLoaded(true)
+		} catch (error) {
+			setIsLoaded(false)
+			alert('An Error Occured While Loading the Contents')
+		}
+	}
 
-  return (
-    <>
-      <div id='Header-Image'>
-        <img src='./Media/Header_Pic.png' alt='Knots and Greens' />
-      </div>
-      <div id='Header-Texts'>
-        <h1 id='Title'>Something handmade is so much more meaningful</h1>
-        <p><i>Knot</i> your average style. Discover the art of macramé</p>
-        <a href='/Shop'><button id='ShopNow-Button'>Shop Now</button></a>
-      </div>
-      <div id='First-Section'>
-        <h2>EXPRESS THE LOVE WITH OUR</h2>
-        <h2 className='Accent-Text'>Plant Bouquets</h2>
-      </div>
-      <Carousel />
-      <div id='Second-Section'>
-        <p>Valentine's Day is just around the corner! Are you looking for a meaningful way to impress your partner?
-          How about a stunning plant bouquet? It will not only stay vibrant for more than a week but also serve as a symbol
-          of the growing love you share with one another.</p>
-      </div>
-      <h2 id='ProductSectTitle'>Macramé Decorations</h2>
-      <div id='ProductSection'>
-        {products.map((product) => {
-          if (product.tags.includes('featured')) {
-            return <ProductStack item={product} />
-          } else {
-            return undefined;
-          }
-        })}
-      </div>
-      <FooterComp />
-    </>
-  );
+	if (!isLoaded) {
+		return (
+			<>
+				<div className='Loading-Container'>
+					<h1>Loading...</h1>
+				</div>
+			</>
+		)
+	} else {
+		return (
+			<>
+				<div id='Header-Image'>
+					<img src='./Media/Header_Pic.png' alt='Knots and Greens' />
+				</div>
+				<div id='Header-Texts'>
+					<h1 id='Title'>Something handmade is so much more meaningful</h1>
+					<p><i>Knot</i> your average style. Discover the art of macramé</p>
+					<a href='/Shop'><button id='ShopNow-Button'>Shop Now</button></a>
+				</div>
+				<div id='First-Section'>
+					<h2>EXPRESS THE LOVE WITH OUR</h2>
+					<h2 className='Accent-Text'>Plant Bouquets</h2>
+				</div>
+				<Carousel props={setIsLoaded} />
+				<div id='Second-Section'>
+					<p>Valentine's Day is just around the corner! Are you looking for a meaningful way to impress your partner?
+						How about a stunning plant bouquet? It will not only stay vibrant for more than a week but also serve as a symbol
+						of the growing love you share with one another.</p>
+				</div>
+				<h2 id='ProductSectTitle'>Macramé Decorations</h2>
+				<div id='ProductSection'>
+					{products.map((product) => {
+						if (product.tags.includes('featured')) {
+							return <ProductStack item={product} />
+						} else {
+							return undefined;
+						}
+					})}
+				</div>
+				<FooterComp />
+			</>
+		);
+	}
 }
 
 export default Home;

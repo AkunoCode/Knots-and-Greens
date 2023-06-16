@@ -19,10 +19,8 @@ const URL_PATH = 'http://localhost:2003/products'
 // { path: "./Media/Macrame/PotHugger.jpg", product_name: "Macramme Pot Hugger", product_qty: 10, product_price: 500 },
 // { path: "./Media/Macrame/Tree.jpg", product_name: "Macramme Christmas Tree Wall Decoration", product_qty: 10, product_price: 700 }];
 function Shop() {
-
-
-
     const [products, setProducts] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         loadData();
@@ -32,7 +30,9 @@ function Shop() {
         try {
             const response = await axios.get(URL_PATH)
             setProducts(response.data.result)
+            setIsLoaded(true)
         } catch (error) {
+            setIsLoaded(false)
             alert('An Error Occured While Loading the Contents')
         }
     }
@@ -51,27 +51,39 @@ function Shop() {
 
     let NoMatch = true;
 
-    return (
-        <>
-            <div id="Shop-Container">
-                <div id="Search-Section">
-                    <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Searching for an item?" id="SearchBar" />
-                    <div id="ResultsContainer">
-                        {matchProducts.length !== 0 ? matchProducts.map((match) => {
-                            return match !== null ? <ProductStack item={match} /> : null
-                        }) : NoMatch = false}
+    if (!isLoaded) {
+        return (
+            <>
+                <div className='Loading-Container'>
+                    <h1>Loading...</h1>
+                </div>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <div id="Shop-Container">
+                    <div id="Search-Section">
+                        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Searching for an item?" id="SearchBar" />
+                        <div id="ResultsContainer">
+                            {matchProducts.length !== 0 ?
+                                matchProducts.map((match) => {
+                                    return match !== null ? <ProductStack item={match} /> : null
+                                })
+                                : NoMatch = false}
+                        </div>
+                        {NoMatch ? "" : <p id="NoMatch">No Match Found For "{search}"</p>}
                     </div>
-                    {NoMatch ? "" : <p id="NoMatch">No Match Found For "{search}"</p>}
-                </div>
-                <div id="Cart-Section">
-                    <h2>Your Cart</h2>
+                    <div id="Cart-Section">
+                        <h2>Your Cart</h2>
 
-                    <button id="CheckOut">Check Out Now</button>
+                        <button id="CheckOut">Check Out Now</button>
+                    </div>
                 </div>
-            </div>
-            <FooterComp />
-        </>
-    )
+                <FooterComp />
+            </>
+        )
+    }
 }
 
 export default Shop;

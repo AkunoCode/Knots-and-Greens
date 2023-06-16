@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const URL_PATH = 'http://localhost:2003/products'
 
-function Carousel() {
+function Carousel({ props }) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -18,7 +18,9 @@ function Carousel() {
         try {
             const response = await axios.get(URL_PATH)
             setProducts(response.data.result)
+            props(true)
         } catch (error) {
+            props(false)
             alert('An Error Occured While Loading the Contents')
         }
     }
