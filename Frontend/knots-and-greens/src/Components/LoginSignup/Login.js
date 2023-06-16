@@ -5,19 +5,22 @@ import { useEffect, useState } from "react";
 
 const URL_PATH = 'http://localhost:2003/customers'
 function Login() {
+    // State Variables
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [customers, setCustomers] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [isAdmin, setIsAdmin] = useState(false);
 
+    // Loading Data on first load of the page
     useEffect(() => {
         getAccounts();
     }, [])
 
-    const getAccounts = async () => {
+    // Loading Data from the database and setting the state variable products
+    const getAccounts = async () => { // Asynchronous function
         try {
-            const response = await axios.get(URL_PATH)
+            const response = await axios.get(URL_PATH) // await for the response from the server
             setCustomers(response.data.result)
         } catch (error) {
             alert('An Error Occured While Loading the Contents')
