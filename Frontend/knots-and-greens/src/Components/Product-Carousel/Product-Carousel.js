@@ -4,13 +4,17 @@ import axios from 'axios';
 
 const URL_PATH = 'http://localhost:2003/products'
 
+
 function Carousel({ props }) {
+    // State Variables
     const [products, setProducts] = useState([]);
 
+    // Loading Data on first load of the page
     useEffect(() => {
         loadData();
     }, [])
 
+    // Loading Data from the database and setting the state variable products
     const loadData = async () => {
         try {
             const response = await axios.get(URL_PATH)

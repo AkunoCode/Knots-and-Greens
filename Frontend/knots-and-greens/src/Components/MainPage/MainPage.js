@@ -4,8 +4,10 @@ import './MainPage.css'
 
 function MainPage({ loggedIn, adminAccount }) {
 
+    // State Variables
     const [scrolled, setScrolled] = useState(false);
 
+    // Handling the scroll event
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 0) {
@@ -21,6 +23,7 @@ function MainPage({ loggedIn, adminAccount }) {
         };
     }, []);
 
+    // Handling the click event of the navigation bar
     const handleClickTop = () => {
         window.scrollTo({
             top: 0,

@@ -7,6 +7,7 @@ import SignUp from './LoginSignup/SignUp';
 import Login from './LoginSignup/Login';
 
 function App() {
+    // Routes
     return (
         <BrowserRouter>
             <Routes>

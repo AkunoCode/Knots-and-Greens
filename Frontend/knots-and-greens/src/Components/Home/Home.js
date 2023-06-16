@@ -9,16 +9,19 @@ import { useEffect, useState } from 'react';
 const URL_PATH = 'http://localhost:2003/products'
 
 function Home() {
+	// State Variables
 	const [products, setProducts] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 
+	// Loading Data on first load of the page
 	useEffect(() => {
 		loadData();
 	}, [])
 
-	const loadData = async () => {
+	// Loading Data from the database and setting the state variable products
+	const loadData = async () => { // Asynchronous function
 		try {
-			const response = await axios.get(URL_PATH)
+			const response = await axios.get(URL_PATH) // await for the response from the server
 			setProducts(response.data.result)
 			setIsLoaded(true)
 		} catch (error) {
@@ -27,6 +30,7 @@ function Home() {
 		}
 	}
 
+	// if the data is not yet loaded, display the loading screen, else display the contents
 	if (!isLoaded) {
 		return (
 			<>

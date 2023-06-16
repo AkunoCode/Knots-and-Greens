@@ -7,13 +7,16 @@ import axios from 'axios';
 const URL_PATH = 'http://localhost:2003/products'
 
 function Shop() {
+    // State Variables
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    // Loading Data on first load of the page
     useEffect(() => {
         loadData();
     }, [])
 
+    // Loading Data from the database and setting the state variable products
     const loadData = async () => {
         try {
             const response = await axios.get(URL_PATH)
@@ -28,6 +31,7 @@ function Shop() {
     // SEARCH FUNCTION
     const [search, setSearch] = useState("");
 
+    // Filtering the products based on the search
     let matchProducts = products.map((item) => {
         const regex = new RegExp(search, 'i');
         if (regex.test(item.productName)) {
@@ -35,10 +39,12 @@ function Shop() {
         } else { return null }
     })
 
+    // Removing the null values from the array
     matchProducts = matchProducts.filter((value) => value !== null)
 
     let NoMatch = true;
 
+    // if the data is not yet loaded, display the loading screen, else display the contents
     if (!isLoaded) {
         return (
             <>
