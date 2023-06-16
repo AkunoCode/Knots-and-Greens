@@ -2,18 +2,19 @@ import { useEffect, useState } from 'react';
 import './Product-Carousel.css'
 import axios from 'axios';
 
-// let ImageArray = ["./Media/Plant/Bambino.jpg", "./Media/Plant/Fittonia.jpg", "./Media/Plant/JadePlant.jpg",
-//     "./Media/Plant/RedBeauty.jpg", "./Media/Plant/RedPeperonia.jpg", "./Media/Plant/WaterMelon.jpg"]
-
 const URL_PATH = 'http://localhost:2003/products'
 
+
 function Carousel({ props }) {
+    // State Variables
     const [products, setProducts] = useState([]);
 
+    // Loading Data on first load of the page
     useEffect(() => {
         loadData();
     }, [])
 
+    // Loading Data from the database and setting the state variable products
     const loadData = async () => {
         try {
             const response = await axios.get(URL_PATH)

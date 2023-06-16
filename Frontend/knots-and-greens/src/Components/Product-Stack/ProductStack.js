@@ -1,8 +1,11 @@
 import './ProductStack.css'
 
-
+// Product Stack Component: This component is used to display the products in the shop page
 function ProductStack({ item }) {
+    // Destructuring the item object
     const { imagePath, price, productName, qty } = item;
+
+    // Returning the Product Stack Component
     return (
         <div className="ProductContainer">
             <div id="ImageContainer">

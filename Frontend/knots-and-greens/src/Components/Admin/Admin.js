@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const URL_PATH = 'http://localhost:2003/products'
 function Admin() {
+    // State Variables
     const [products, setProducts] = useState([]);
     const [_id, setId] = useState();
     const [imagePath, setImagePath] = useState("")
@@ -20,9 +21,10 @@ function Admin() {
         loadData();
     }, [])
 
-    const loadData = async () => {
+    // Loading Data from the database and setting the state variable products
+    const loadData = async () => { // Asynchronous function
         try {
-            const response = await axios.get(URL_PATH)
+            const response = await axios.get(URL_PATH) // await for the response from the server
             setProducts(response.data.result)
         } catch (error) {
             alert('An Error Occured While Loading the Contents')
@@ -45,57 +47,52 @@ function Admin() {
 
     // Handling image changes that will resize the image using react-image-file-resizer and setimagepath to the base64 string
     const handleImageChange = (image) => {
-        Resizer.imageFileResizer(
-            image,
-            260,
-            360,
-            "JPEG",
-            99,
-            0,
-            (uri) => {
-                setImagePath(uri);
-            },
-            "base64"
-        );
+        Resizer.imageFileResizer(image, 260, 360, "JPEG", 99, 0, (uri) => { setImagePath(uri); }, "base64");
     };
 
 
-
     // Creating new product
-    const createProduct = async () => {
+    const createProduct = async () => { // Asynchronous function
         try {
-            const response = await axios.post(URL_PATH, {
+            const response = await axios.post(URL_PATH, { // await for the response from the server
                 imagePath: imagePath,
                 productName: productName,
                 price: price,
                 qty: qty,
                 tags: checkedValues
             })
-            console.log(response)
         } catch (error) {
             alert('An Error Occured While Creating Product')
         }
     }
 
     // Fill Inputs by getting the product information from the database matching the id
-    const fillInputs = async (id) => {
+    const fillInputs = async (id) => {  // Asynchronous function
         try {
-            const response = await axios.get(`${URL_PATH}/${id}`)
+            const response = await axios.get(`${URL_PATH}/${id}`) // await for the response from the server
             setImagePath(response.data.result.imagePath)
             setProductName(response.data.result.productName)
             setPrice(response.data.result.price)
             setQty(response.data.result.qty)
             setCheckedValues(response.data.result.tags)
             setId(response.data.result._id)
+
+            // check the checkbox
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox) => {
+                if (response.data.result.tags.includes(checkbox.value)) {
+                    checkbox.checked = true;
+                }
+            });
         } catch (error) {
             alert('An Error Occured While Loading the Contents')
         }
     }
 
     // Editing Product
-    const editProduct = async (id) => {
+    const editProduct = async (id) => { // Asynchronous function
         try {
-            const response = await axios.put(`${URL_PATH}/${id}`, {
+            const response = await axios.put(`${URL_PATH}/${id}`, { // await for the response from the server
                 imagePath: imagePath,
                 productName: productName,
                 price: price,
@@ -110,9 +107,9 @@ function Admin() {
     }
 
     // Deleting Product
-    const deleteProduct = async (id) => {
+    const deleteProduct = async (id) => { // Asynchronous function
         try {
-            const response = await axios.delete(`${URL_PATH}/${id}`)
+            const response = await axios.delete(`${URL_PATH}/${id}`) // await for the response from the server
             console.log(response)
         } catch (error) {
             alert('An Error Occured While Deleting Product')
@@ -121,6 +118,7 @@ function Admin() {
 
     // Create or Edit Product
     const createOrEditProduct = () => {
+        // If _id is not empty, it will edit the product, else it will create a new product
         if (_id) {
             editProduct(_id);
             clearInputs();
@@ -139,6 +137,11 @@ function Admin() {
         setCheckedValues([]);
         setId("");
         inputRef.current.value = "";
+
+        // clear the checkbox
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => (checkbox.checked = false));
+
     }
 
 

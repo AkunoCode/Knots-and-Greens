@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const URL_PATH = 'http://localhost:2003/customers'
 function SignUp() {
+    // State Variables
     const [firstName, setfirstName] = useState('');
     const [lastName, setlastName] = useState('');
     const [password, setPassword] = useState('');
@@ -12,34 +13,12 @@ function SignUp() {
     const [phone, setPhone] = useState('');
     const [paymentMethod, setPaymentMethod] = useState([]);
 
-    const handleFirstName = (event) => {
-        setfirstName(event.target.value)
-    }
-
-    const handleLastName = (event) => {
-        setlastName(event.target.value)
-    }
-
-    const handlePassword = (event) => {
-        setPassword(event.target.value)
-    }
-
-    const handleEmail = (event) => {
-        setEmail(event.target.value)
-    }
-
-    const handleAddress = (event) => {
-        setAddress(event.target.value)
-    }
-
-    const handlePhone = (event) => {
-        setPhone(event.target.value)
-    }
-
+    // Handling Checkbox Changes to get which box is checked
     const handlePaymentMethod = (event) => {
         const paymentMethodValue = event.target.value;
         const isChecked = event.target.checked;
 
+        // If the checkbox is checked, add the value to the paymentMethod state variable, else remove the value from the paymentMethod state variable
         if (isChecked) {
             setPaymentMethod((prevPaymentMethod) => [...prevPaymentMethod, paymentMethodValue]);
         } else {
@@ -49,6 +28,7 @@ function SignUp() {
         }
     }
 
+    // Handling the submit button
     const handleSubmit = (event) => {
         event.preventDefault();
         createCustomer();
@@ -64,6 +44,13 @@ function SignUp() {
         setAddress("");
         setPhone("");
         setPaymentMethod([]);
+
+        // unchecked all the checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = false;
+        }
+        )
     }
 
     // Put the customer object to the database
@@ -93,12 +80,12 @@ function SignUp() {
         <>
             <div className="Signup-Container">
                 <h1>Create An Account</h1>
-                <input type="text" placeholder="First Name" onChange={handleFirstName} />
-                <input type="text" placeholder="Last Name" onChange={handleLastName} />
-                <input type="email" placeholder="Email" onChange={handleEmail} />
-                <input type="password" placeholder="Password" onChange={handlePassword} />
-                <input type="text" placeholder="Address" onChange={handleAddress} />
-                <input type="text" placeholder="Phone Number" onChange={handlePhone} />
+                <input type="text" placeholder="First Name" onChange={(e) => setfirstName(e.target.value)} />
+                <input type="text" placeholder="Last Name" onChange={(e) => setlastName(e.target.value)} />
+                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                <input type="text" placeholder="Address" onChange={(e) => setAddress(e.target.value)} />
+                <input type="text" placeholder="Phone Number" onChange={(e) => setPhone(e.target.value)} />
                 <div className="Payment-Method">
                     <h2>Payment Method</h2>
                     <div className="CheckBox">
