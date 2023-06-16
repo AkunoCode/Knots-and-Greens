@@ -6,18 +6,6 @@ import axios from 'axios'
 import { useEffect, useState } from 'react';
 
 
-// const TempInfo = [{
-//   path: "./Media/Macrame/Basket.jpg", product_name: "Macramme Basket Decoration", product_qty: 10, product_price: 500
-// },
-// { path: "./Media/Macrame/Duotone.jpg", product_name: "Macramme Duotone Wall Decoration", product_qty: 10, product_price: 750 },
-// { path: "./Media/Macrame/Mirror.jpg", product_name: "Macramme Circular Mirror", product_qty: 10, product_price: 1000 },
-// { path: "./Media/Macrame/Monotone.jpg", product_name: "Macramme Monotone Wall Decoration", product_qty: 10, product_price: 500 },
-// { path: "./Media/Macrame/Monstera.jpg", product_name: "Macramme Monstera Wall Decoration", product_qty: 10, product_price: 750 },
-// { path: "./Media/Macrame/Owl.jpg", product_name: "Macramme Owl Wall Decoration", product_qty: 10, product_price: 500 },
-// { path: "./Media/Macrame/PotHangerBig.jpg", product_name: "Macramme Pot Hanger (Big)", product_qty: 10, product_price: 500 },
-// { path: "./Media/Macrame/PotHugger.jpg", product_name: "Macramme Pot Hugger", product_qty: 10, product_price: 500 },
-// { path: "./Media/Macrame/Tree.jpg", product_name: "Macramme Christmas Tree Wall Decoration", product_qty: 10, product_price: 700 }]
-
 const URL_PATH = 'http://localhost:2003/products'
 
 function Home() {

@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import './Product-Carousel.css'
 import axios from 'axios';
 
-// let ImageArray = ["./Media/Plant/Bambino.jpg", "./Media/Plant/Fittonia.jpg", "./Media/Plant/JadePlant.jpg",
-//     "./Media/Plant/RedBeauty.jpg", "./Media/Plant/RedPeperonia.jpg", "./Media/Plant/WaterMelon.jpg"]
-
 const URL_PATH = 'http://localhost:2003/products'
 
 function Carousel({ props }) {
