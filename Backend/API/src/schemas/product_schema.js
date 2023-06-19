@@ -3,20 +3,20 @@ const db = require('mongoose');
 const productSchema = new db.Schema({
     imagePath: {
         type: String,
-        require: true
+        required: true
     },
 
     productName: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     qty: {
         type: Number,
-        require: true,
+        required: true,
         min: [1, "Stock can not be less than 1."]
     },
     tags: {

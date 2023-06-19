@@ -1,19 +1,13 @@
 const db = require('mongoose');
 
 const customerSchema = new db.Schema({
-    name: {
-        firstname: {
-            type: String,
-            require: true
-        },
-        lastname: {
-            type: String,
-            require: true
-        }
+    username: {
+        type: [String],
+        required: true
     },
     email: {
         type: String,
-        require: true,
+        required: true,
         validate: {
             validator: function (value) {
                 // Regular expression pattern to validate email format
@@ -25,15 +19,15 @@ const customerSchema = new db.Schema({
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
     address: {
         type: String,
-        require: true
+        required: true
     },
     phone: {
         type: String,
-        require: true,
+        required: true,
         validate: {
             validator: (value) => {
                 // Regular expression pattern to validate phone format
@@ -45,7 +39,7 @@ const customerSchema = new db.Schema({
     },
     payment_method: {
         type: [String],
-        require: true,
+        required: true,
         enum: ["GCash", "Debit Card", "Cash-On-Delivery"],
         validate: {
             validator: (value) => {
