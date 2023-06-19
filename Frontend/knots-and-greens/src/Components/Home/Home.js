@@ -8,7 +8,10 @@ import { useEffect, useState } from 'react';
 
 const URL_PATH = 'http://localhost:2003/products'
 
-function Home() {
+function Home({ props }) {
+	//Props
+	const { isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin } = props;
+
 	// State Variables
 	const [products, setProducts] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +19,7 @@ function Home() {
 	// Loading Data on first load of the page
 	useEffect(() => {
 		loadData();
-	}, [])
+	})
 
 	// Loading Data from the database and setting the state variable products
 	const loadData = async () => { // Asynchronous function
@@ -64,7 +67,7 @@ function Home() {
 				<div id='ProductSection'>
 					{products.map((product) => {
 						if (product.tags.includes('featured')) {
-							return <ProductStack item={product} />
+							return <ProductStack item={product} props={isLoggedIn} />
 						} else {
 							return undefined;
 						}

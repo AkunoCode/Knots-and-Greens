@@ -6,7 +6,10 @@ import axios from 'axios';
 
 const URL_PATH = 'http://localhost:2003/products'
 
-function Shop() {
+function Shop({ props }) {
+    //Props
+    const { isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin } = props;
+
     // State Variables
     const [products, setProducts] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -14,7 +17,7 @@ function Shop() {
     // Loading Data on first load of the page
     useEffect(() => {
         loadData();
-    }, [])
+    })
 
     // Loading Data from the database and setting the state variable products
     const loadData = async () => {
@@ -62,7 +65,7 @@ function Shop() {
                         <div id="ResultsContainer">
                             {matchProducts.length !== 0 ?
                                 matchProducts.map((match) => {
-                                    return match !== null ? <ProductStack item={match} /> : null
+                                    return match !== null ? <ProductStack item={match} props={isLoggedIn} /> : null
                                 })
                                 : NoMatch = false}
                         </div>
@@ -70,8 +73,9 @@ function Shop() {
                     </div>
                     <div id="Cart-Section">
                         <h2>Your Cart</h2>
-
-                        <button id="CheckOut">Check Out Now</button>
+                        {!isLoggedIn ?
+                            <p id="NotLoggedIn">You are not logged in. Please login to view your cart.</p>
+                            : <button id="CheckOut">Check Out Now</button>}
                     </div>
                 </div>
                 <FooterComp />
