@@ -64,7 +64,10 @@ function SignUp() {
                 phone: phone,
                 payment_method: paymentMethod
             });
-            clearInputs();
+            if (response.status === 201) {
+                alert('Account Created Successfully');
+                clearInputs();
+            }
         } catch (error) {
             alert('An Error Occured While Creating Account')
         }
