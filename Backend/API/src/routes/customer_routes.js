@@ -1,4 +1,5 @@
 // Importing Dependencies
+const bcrypt = require('bcrypt');
 const express = require('express');
 const db = require('mongoose');
 const router = express.Router();
@@ -48,19 +49,24 @@ router.get('/customers/:customerID', (req, res) => {
 // POST METHOD: Input New Record from the data attached in the body of the http request, which will then
 // be parsed by the middleware.
 router.post('/customers', (req, res) => {
-    const { name, email, password, address, phone, payment_method } = req.body;
-    const newCustomer = new Customer({ name, email, password, address, phone, payment_method });
+    const { username, email, password, address, phone, payment_method } = req.body;
 
-
-    newCustomer.save().then((customer) => {
-        res.status(201).json({
-            message: `Customer data created and saved.`,
-            result: customer
+    // Hashing the password before saving it to the database.
+    bcrypt.hash(password, 10).then((hash) => {
+        const newCustomer = new Customer({ username, email, password: hash, address, phone, payment_method });
+        newCustomer.save().then((customer) => {
+            res.status(201).json({
+                message: `Customer data created and saved.`,
+                result: customer
+            });
+        }).catch((err) => {
+            res.status(500).json({ error: err.message });
         });
     }).catch((err) => {
         res.status(500).json({ error: err.message });
     });
 });
+
 
 
 // PUT METHOD: Update a record by fetching the customerID attached in the parameters of the URI and replacing
