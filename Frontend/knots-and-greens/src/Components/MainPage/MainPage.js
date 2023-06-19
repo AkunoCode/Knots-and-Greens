@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './MainPage.css'
 
-function MainPage({ loggedIn, adminAccount }) {
+function MainPage({ props }) {
+    //Props
+    const { isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin } = props;
 
     // State Variables
     const [scrolled, setScrolled] = useState(false);
@@ -41,7 +43,7 @@ function MainPage({ loggedIn, adminAccount }) {
                     </div>
                     <nav>
                         <ul id={`Navigation-Bar${scrolled ? '-Scrolled' : ''}`}>
-                            {!adminAccount ? <><li> <Link to="/" onClick={handleClickTop}>HOME</Link></li>
+                            {!isAdmin ? <><li> <Link to="/" onClick={handleClickTop}>HOME</Link></li>
                                 <li><Link to="/Shop" onClick={handleClickTop}>SHOP</Link></li>
                                 <li><Link to="/About" onClick={handleClickTop}>ABOUT</Link></li>
                             </>
@@ -54,10 +56,10 @@ function MainPage({ loggedIn, adminAccount }) {
                         </ul>
                     </nav>
                     <div id="LoginCart">
-                        {!loggedIn ? <p className={scrolled ? 'Scrolled-Login' : ''}>
+                        {!isLoggedIn ? <p className={scrolled ? 'Scrolled-Login' : ''}>
                             <Link to='/Login' onClick={handleClickTop} className={scrolled ? 'Scrolled-Login' : ''}>LOGIN</Link>/
                             <Link to='/Signup' onClick={handleClickTop} className={scrolled ? 'Scrolled-Login' : ''}>SIGNUP</Link>
-                        </p> : <Link to='/' onClick={() => { handleClickTop(); loggedIn = false }} className={scrolled ? 'Scrolled-Login' : ''}>LOGOUT</Link>}
+                        </p> : <Link to='/' onClick={() => { handleClickTop(); setIsLoggedIn(false) }} className={scrolled ? 'Scrolled-Login' : ''}>LOGOUT</Link>}
                     </div>
                 </div>
             </header >

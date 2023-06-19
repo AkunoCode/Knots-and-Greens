@@ -1,32 +1,24 @@
 import './Login.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
 
 const URL_PATH = 'http://localhost:2003/customers'
-function Login() {
+function Login({ props }) {
+    //Lifting State Up
+    const { isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin } = props;
+
     // State Variables
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [customers, setCustomers] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const [isAdmin, setIsAdmin] = useState(false);
     const [failedLogin, setFailedLogin] = useState(false);
+    const navigate = useNavigate();
 
     // Loading Data on first load of the page
     useEffect(() => {
         setFailedLogin(false);
     }, [email, password])
-
-    // // Loading Data from the database and setting the state variable products
-    // const getAccounts = async () => { // Asynchronous function
-    //     try {
-    //         const response = await axios.get(URL_PATH) // await for the response from the server
-    //         setCustomers(response.data.result)
-    //     } catch (error) {
-    //         alert('An Error Occured While Loading the Contents')
-    //     }
-    // }
 
     // Check if email and password matches the database
     const handleSubmit = (event) => {
@@ -40,6 +32,7 @@ function Login() {
                 setIsLoggedIn(true);
                 setFailedLogin(false);
                 clearInputs();
+                navigate('/');
             }
         }
         ).catch((error) => {
