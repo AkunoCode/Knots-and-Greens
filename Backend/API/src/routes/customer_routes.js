@@ -68,6 +68,24 @@ router.post('/customers', (req, res) => {
 });
 
 
+// POST METHOD: Login a customer by matching the email and password attached in the body of the http request.
+router.post('/customers/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    // Check if the username is in the database
+    const userMatch = await Customer.findOne({ email });
+    if (!userMatch) {
+        return res.status(401).json({ message: "Invalid username or password." });
+    } else {
+        // Check if the password is correct
+        const passwordMatch = await bcrypt.compare(password, userMatch.password);
+        if (!passwordMatch) {
+            return res.status(401).json({ message: "Invalid username or password." });
+        } else {
+            res.status(200).json({ message: "Successfully logged in." });
+        }
+    }
+});
 
 // PUT METHOD: Update a record by fetching the customerID attached in the parameters of the URI and replacing
 // it with the values that will come from the body of the http request.
