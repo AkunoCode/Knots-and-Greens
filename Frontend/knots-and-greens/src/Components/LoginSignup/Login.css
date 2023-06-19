@@ -1,4 +1,4 @@
-.Login-Container{
+.Login-Container {
     position: absolute;
     width: 50%;
     margin-left: auto;
@@ -11,18 +11,20 @@
     padding: 4vw 0px 4vw 0px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.22);
 }
-.Login-Container p{
+
+.Login-Container p {
     font-size: 2rem;
     margin: 0;
     margin-top: 1vw;
 }
-.Login-Container h1{
+
+.Login-Container h1 {
     margin: 0px;
     font-size: 3rem;
     color: var(--MainColor);
 }
 
-#Email-Input{
+#Email-Input {
     margin-top: 1vw;
     display: block;
     width: 70%;
@@ -33,7 +35,7 @@
     border-radius: 1vw;
 }
 
-#Password-Input{
+#Password-Input {
     display: block;
     width: 70%;
     font-size: 2rem;
@@ -44,7 +46,7 @@
     border-radius: 1vw;
 }
 
-#Login-Button{
+#Login-Button {
     margin-top: 3vw;
     width: 50%;
     padding: 1vw .5vw 1vw .5vw;
@@ -53,4 +55,26 @@
     background-color: var(--AccentColor);
     border-radius: 2vw;
     color: white;
+}
+
+#Failed-Login {
+    color: red;
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 3vw;
+    animation: blinking 1.5s ease-in-out infinite both;
+}
+
+@keyframes blinking {
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    0% {
+        opacity: 0;
+    }
 }
