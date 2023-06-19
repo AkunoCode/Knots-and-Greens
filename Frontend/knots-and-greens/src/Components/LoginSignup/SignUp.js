@@ -57,17 +57,13 @@ function SignUp() {
     const createCustomer = async () => {
         try {
             const response = await axios.post(URL_PATH, {
-                name: {
-                    firstName: firstName,
-                    lastName: lastName
-                },
+                username: [firstName, lastName],
                 email: email,
                 password: password,
                 address: address,
                 phone: phone,
                 payment_method: paymentMethod
-            })
-            console.log("Account Created")
+            });
             clearInputs();
         } catch (error) {
             alert('An Error Occured While Creating Account')
@@ -80,12 +76,12 @@ function SignUp() {
         <>
             <div className="Signup-Container">
                 <h1>Create An Account</h1>
-                <input type="text" placeholder="First Name" onChange={(e) => setfirstName(e.target.value)} />
-                <input type="text" placeholder="Last Name" onChange={(e) => setlastName(e.target.value)} />
-                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                <input type="text" placeholder="Address" onChange={(e) => setAddress(e.target.value)} />
-                <input type="text" placeholder="Phone Number" onChange={(e) => setPhone(e.target.value)} />
+                <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setfirstName(e.target.value)} />
+                <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setlastName(e.target.value)} />
+                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+                <input type="text" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} />
                 <div className="Payment-Method">
                     <h2>Payment Method</h2>
                     <div className="CheckBox">
