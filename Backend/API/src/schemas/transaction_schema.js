@@ -3,17 +3,17 @@ const db = require('mongoose');
 const transactionSchema = new db.Schema({
     customerID: {
         type: String,
-        require: true
+        required: true
     },
     products: {
         type: [{
             productID: {
                 type: String,
-                require: true
+                required: true
             },
             quantity: {
                 type: Number,
-                require: true,
+                required: true,
                 min: [1, "Order quantity can not be less than 1"]
             }
         }],
@@ -26,7 +26,7 @@ const transactionSchema = new db.Schema({
     },
     total_price: {
         type: Number,
-        require: true,
+        required: true,
     },
     transaction_date: {
         type: Date,
