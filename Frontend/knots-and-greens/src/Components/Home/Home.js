@@ -65,9 +65,9 @@ function Home({ props }) {
 				</div>
 				<h2 id='ProductSectTitle'>Macramé Decorations</h2>
 				<div id='ProductSection'>
-					{products.map((product) => {
+					{products.map((product, index) => {
 						if (product.tags.includes('featured')) {
-							return <ProductStack item={product} props={isLoggedIn} />
+							return <ProductStack item={product} props={isLoggedIn} key={index} />
 						} else {
 							return undefined;
 						}

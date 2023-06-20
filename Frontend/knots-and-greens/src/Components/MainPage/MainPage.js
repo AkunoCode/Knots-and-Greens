@@ -59,7 +59,7 @@ function MainPage({ props }) {
                         {!isLoggedIn ? <p className={scrolled ? 'Scrolled-Login' : ''}>
                             <Link to='/Login' onClick={handleClickTop} className={scrolled ? 'Scrolled-Login' : ''}>LOGIN</Link>/
                             <Link to='/Signup' onClick={handleClickTop} className={scrolled ? 'Scrolled-Login' : ''}>SIGNUP</Link>
-                        </p> : <Link to='/' onClick={() => { handleClickTop(); setIsLoggedIn(false) }} className={scrolled ? 'Scrolled-Login' : ''}>LOGOUT</Link>}
+                        </p> : <Link to='/' onClick={() => { handleClickTop(); setIsLoggedIn(false); localStorage.clear() }} className={scrolled ? 'Scrolled-Login' : ''}>LOGOUT</Link>}
                     </div>
                 </div>
             </header >

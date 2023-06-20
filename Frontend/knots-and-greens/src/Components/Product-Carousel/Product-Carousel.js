@@ -29,9 +29,9 @@ function Carousel({ props }) {
     return (
         <div className="Carousel-Container">
             <div className='Images-Container'>
-                {products.map((product) => {
+                {products.map((product, index) => {
                     if (product.tags.includes('carousel')) {
-                        return <a href='/Shop'><img src={product.imagePath} alt={product.productName} /></a>
+                        return <a href='/Shop'><img src={product.imagePath} alt={product.productName} key={index} /></a>
                     } else {
                         return undefined;
                     }

@@ -18,7 +18,7 @@ function ProductStack({ item, props }) {
             alert('Please Login First')
             navigate('/Login')
         } else {
-            // get user token
+            // get user token and place it in the localStorage.
             const token = localStorage.getItem('token');
             console.log(token)
             // get the products in the cart and update it
@@ -58,12 +58,10 @@ function ProductStack({ item, props }) {
                 }
                 ).catch((error) => {
                     alert('An Error Occured While Adding the Product to the Cart')
-                    console.log(1, error)
                 }
                 )
             }).catch((error) => {
                 alert('An Error Occured While Adding the Product to the Cart')
-                console.log(2, error)
             }
             )
         }
