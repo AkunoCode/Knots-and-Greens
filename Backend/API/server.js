@@ -12,6 +12,7 @@ const transactionRoutes = require('./src/routes/transaction_routes');
 
 const app = express();
 
+
 // MIDDLEWARE
 app.use(cors());
 app.use(productRoutes);
