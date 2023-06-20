@@ -5,6 +5,7 @@ const db = require('mongoose');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const Customer = require('../schemas/customer_schema');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 // Middlewares
@@ -82,7 +83,17 @@ router.post('/customers/login', async (req, res) => {
         if (!passwordMatch) {
             return res.status(401).json({ message: "Invalid username or password." });
         } else {
-            res.status(200).json({ message: "Successfully logged in." });
+            // Create a token
+            const token = jwt.sign({
+                id: userMatch._id,
+                username: userMatch.username,
+                email: userMatch.email,
+                address: userMatch.address,
+                phone: userMatch.phone,
+                payment_method: userMatch.payment_method
+            }, process.env.JWT_SECRET, { expiresIn: '10m' });
+            // Send the token
+            return res.status(200).json({ token: token, message: "Successfully logged in." });
         }
     }
 });
