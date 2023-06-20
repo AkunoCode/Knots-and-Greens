@@ -1,5 +1,8 @@
+import axios from 'axios';
 import './ProductStack.css'
 import { useNavigate } from 'react-router-dom'
+
+const URL_PATH = `http://localhost:2003/carts`
 
 // Product Stack Component: This component is used to display the products in the shop page
 function ProductStack({ item, props }) {
@@ -7,7 +10,7 @@ function ProductStack({ item, props }) {
     const navigate = useNavigate();
 
     // Destructuring the item object
-    const { imagePath, price, productName, qty } = item;
+    const { _id, imagePath, price, productName, qty } = item;
 
     // Adding the product to the cart
     const addToCart = () => {
@@ -15,7 +18,54 @@ function ProductStack({ item, props }) {
             alert('Please Login First')
             navigate('/Login')
         } else {
-            alert('Added to Cart')
+            // get user token
+            const token = localStorage.getItem('token');
+            console.log(token)
+            // get the products in the cart and update it
+            axios.get(URL_PATH, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then((response) => {
+                let cart = response.data.result;
+                // if a product already exist in the cart, it'll just increment its qty.
+                if (cart.products.some((product) => product.productID === _id)) {
+                    cart.products.forEach((product) => {
+                        if (product.productID === _id) {
+                            product.quantity += 1;
+                        }
+                    })
+                }
+                // else it will push (append) the new product object.
+                else {
+                    cart.products.push({
+                        productID: _id,
+                        productName,
+                        quantity: 1,
+                        price
+                    })
+                }
+                // update the cart using put with the AccessToken
+                axios.put(URL_PATH, {
+                    customerID: cart.customerID,
+                    products: cart.products
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }).then((response) => {
+                    alert('Product Added to Cart')
+                }
+                ).catch((error) => {
+                    alert('An Error Occured While Adding the Product to the Cart')
+                    console.log(1, error)
+                }
+                )
+            }).catch((error) => {
+                alert('An Error Occured While Adding the Product to the Cart')
+                console.log(2, error)
+            }
+            )
         }
     }
 
