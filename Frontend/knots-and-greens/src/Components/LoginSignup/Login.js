@@ -3,8 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
-
-const URL_PATH = 'http://localhost:2003/customers'
+const URL_PATH = 'http://localhost:2003/customers/login'
 function Login({ props }) {
     //Lifting State Up
     const { isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin } = props;
@@ -27,8 +26,9 @@ function Login({ props }) {
             email: email,
             password: password
         }
-        const response = axios.post(URL_PATH + '/login', payload).then((response) => {
+        const response = axios.post(URL_PATH, payload).then((response) => {
             if (response.data.message === "Successfully logged in.") {
+                localStorage.setItem('token', response.data.token);
                 setIsLoggedIn(true);
                 setFailedLogin(false);
                 clearInputs();
