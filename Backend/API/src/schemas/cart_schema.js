@@ -2,18 +2,26 @@ const db = require('mongoose');
 
 const cartSchema = new db.Schema({
     customerID: {
-        require: true,
+        required: true,
         type: String
     },
     products: {
         type: [{
             productID: {
                 type: String,
-                require: true
+                required: true
+            },
+            productName: {
+                type: String,
+                required: true
             },
             quantity: {
                 type: Number,
-                require: true,
+                required: true,
+            },
+            price: {
+                type: Number,
+                required: true
             }
         }]
     }

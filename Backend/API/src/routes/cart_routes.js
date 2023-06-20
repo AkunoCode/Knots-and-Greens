@@ -4,6 +4,7 @@ const Cart = require('../schemas/cart_schema');
 const router = express.Router();
 const db = require('mongoose');
 const bodyParser = require('body-parser');
+const authToken = require('./authMidware')
 require('dotenv').config();
 
 
@@ -20,12 +21,14 @@ db.connect(process.env.MONGODBCONSTRING).then(() => {
 
 
 // GET METHOD: Retrieve all the carts listed in the database.
-router.get('/carts', (req, res) => {
-    Cart.find().then((cart) => {
-        res.status(200).json({
-            message: "Successfully retrieved cart records.",
-            result: cart
-        });
+router.get('/carts', authToken, (req, res) => {
+    const { customerID } = req.user;
+    // find the cart of the user if no cart, return no cart
+    Cart.findOne(customerID).then((cart) => {
+        if (!cart) {
+            return res.status(404).json({ message: "No Cart" });
+        }
+        res.status(200).json({ message: "Cart retrieved successfully.", result: cart });
     }).catch((err) => {
         res.status(500).json({ error: err.message });
     });
@@ -33,27 +36,28 @@ router.get('/carts', (req, res) => {
 
 
 // GET METHOD (SINGLE): Retrieve single cart that matches the cartID attached in the http request URI parameter.
-router.get('/carts/:id', (req, res) => {
-    const cartID = req.params.id;
+// router.get('/carts/:id', (req, res) => {
+//     const cartID = req.params.id;
 
-    Cart.findById(cartID).then((cart) => {
-        if (!cart) {
-            return res.status(404).json({ message: `Cart ID ${cartID} Not Found` });
-        }
-        res.status(200).json({ message: "Single cart retrieved successfully.", result: cart });
-    }).catch((err) => {
-        res.status(500).json({ error: err.message });
-    });
-});
+//     Cart.findById(cartID).then((cart) => {
+//         if (!cart) {
+//             return res.status(404).json({ message: `Cart ID ${cartID} Not Found` });
+//         }
+//         res.status(200).json({ message: "Single cart retrieved successfully.", result: cart });
+//     }).catch((err) => {
+//         res.status(500).json({ error: err.message });
+//     });
+// });
 
 
 // POST METHOD: Input New Record from the data attached in the body of the http request, which will then 
 // be parsed by the middleware.
-router.post('/carts', (req, res) => {
-    const { customerID, products } = req.body;
-    const newProduct = new Cart({ customerID, products });
+router.post('/carts', authToken, (req, res) => {
+    const { customerID } = req.user;
+    const { products } = req.body;
+    const newCart = new Cart({ customerID, products });
 
-    newProduct.save().then((cart) => {
+    newCart.save().then((cart) => {
         res.status(201).json({ message: "Cart successfully created.", result: cart });
     }).catch((err) => {
         res.status(500).json({ error: err.message });
@@ -63,11 +67,11 @@ router.post('/carts', (req, res) => {
 
 // PUT METHOD: Update a record by fetching the cartID attached in the parameters of the URI and replacing
 // it with the values that will come from the body of the http request.
-router.put('/carts/:id', (req, res) => {
-    const cartID = req.params.id;
-    const { customerID, products } = req.body;
+router.put('/carts', authToken, (req, res) => {
+    const { customerID } = req.user;
+    const { products } = req.body;
 
-    Cart.findByIdAndUpdate(cartID, { customerID, products }, { new: true, runValidators: true }).then((cart) => {
+    Cart.findOneAndUpdate(customerID, { customerID, products }, { new: true, runValidators: true }).then((cart) => {
         if (!cart) {
             return res.status(404).json({ message: `Cart ID ${cartID} could not be found.` });
         }
@@ -79,9 +83,9 @@ router.put('/carts/:id', (req, res) => {
 
 
 // DELETE METHOD: Delete a record in the database by matching the cartID attached in the parameters of the http request URI
-router.delete('/carts/:id', (req, res) => {
-    const cartID = req.params.id;
-    Cart.findByIdAndDelete(cartID).then((cart) => {
+router.delete('/carts', authToken, (req, res) => {
+    const { customerID } = req.user;
+    Cart.findOneAndDelete(customerID).then((cart) => {
         if (!cart) {
             return res.status(404).json({ message: `Cart ID ${cartID} could not be found.` });
         }

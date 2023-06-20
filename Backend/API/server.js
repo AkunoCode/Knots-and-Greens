@@ -8,6 +8,7 @@ const port = process.env.PORT;
 const productRoutes = require('./src/routes/product_routes');
 const customerRoutes = require('./src/routes/customer_routes');
 const transactionRoutes = require('./src/routes/transaction_routes');
+const cartRoutes = require('./src/routes/cart_routes');
 
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(productRoutes);
 app.use(customerRoutes);
 app.use(transactionRoutes);
+app.use(cartRoutes)
 
 // Running server on port
 app.listen(port, () => {
