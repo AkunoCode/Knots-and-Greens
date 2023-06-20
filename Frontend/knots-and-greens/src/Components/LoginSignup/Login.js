@@ -29,7 +29,6 @@ function Login({ props }) {
         const response = axios.post(URL_PATH, payload).then((response) => {
             if (response.data.message === "Successfully logged in.") {
                 localStorage.setItem('token', response.data.token);
-                console.log(localStorage.getItem('token'));
                 setIsLoggedIn(true);
                 setFailedLogin(false);
                 clearInputs();
