@@ -17,11 +17,14 @@ function Shop({ props }) {
 
     // Loading Data if there is a change in the cart or login state
     useEffect(() => {
-        loadData();
         if (isLoggedIn) {
             getCart();
         }
     }, [isLoggedIn, cart])
+
+    useEffect(() => {
+        loadData();
+    }, [])
 
     // Loading Data from the database and setting the state variable products
     const loadData = async () => {
@@ -99,7 +102,13 @@ function Shop({ props }) {
                     <div id="Cart-Section">
                         <h2>Your Cart</h2>
                         {isLoggedIn && cart.length !== 0 ? cart.products.map((item) => {
-                            return <p>{item.productName} = {item.price}</p>
+                            return (
+                                <div id='Cart-Item'>
+                                    <p id='item-qty'>{item.quantity}</p>
+                                    <p id='item-name'>{item.productName}</p>
+                                    <p id='item-price'>&#8369;{item.price}</p>
+                                </div>
+                            )
                         }) : ""}
                         {!isLoggedIn ?
                             <p id="NotLoggedIn">You are not logged in. Please login to view your cart.</p>
